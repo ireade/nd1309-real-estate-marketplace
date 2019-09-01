@@ -8,25 +8,94 @@ import "./Oraclize.sol";
 
 contract Ownable {
     //  TODO's
-    //  1) create a private '_owner' variable of type address with a public getter function
-    //  2) create an internal constructor that sets the _owner var to the creater of the contract 
-    //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
-    //  4) fill out the transferOwnership function
-    //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
+    //  [x] create a private '_owner' variable of type address with a public getter function
+    //  [x] create an internal constructor that sets the _owner var to the creater of the contract
+    //  [x] create an 'onlyOwner' modifier that throws if called by any account other than the owner.
+    //  [x] fill out the transferOwnership function
+    //  [x] create an event that emits anytime ownerShip is transfered (including in the constructor)
 
-    function transferOwnership(address newOwner) public onlyOwner {
-        // TODO add functionality to transfer control of the contract to a newOwner.
-        // make sure the new owner is a real address
+    address private _owner;
 
+    event NewOwner(address newOwner);
+
+    modifier onlyOwner
+    {
+        require(msg.sender == _owner, "Owner of this contract is required");
+        _;
+    }
+
+    constructor()
+    public
+    {
+        _owner = msg.sender;
+        emit NewOwner(_owner);
+    }
+
+    function getOwner()
+    public view
+    returns (address)
+    {
+        return _owner;
+    }
+
+    function transferOwnership(address newOwner)
+    public
+    onlyOwner
+    {
+        require(!Address.isContract(newOwner), "Cannot transfer ownership to a contract account");
+
+        _owner = newOwner;
+        emit NewOwner(_owner);
     }
 }
 
-//  TODO's: Create a Pausable contract that inherits from the Ownable contract
-//  1) create a private '_paused' variable of type bool
-//  2) create a public setter using the inherited onlyOwner modifier 
-//  3) create an internal constructor that sets the _paused variable to false
-//  4) create 'whenNotPaused' & 'paused' modifier that throws in the appropriate situation
-//  5) create a Paused & Unpaused event that emits the address that triggered the event
+
+contract Pausable is Ownable {
+
+    //  TODO's: Create a Pausable contract that inherits from the Ownable contract
+    //  [x] create a private '_paused' variable of type bool
+    //  [x] create a public setter using the inherited onlyOwner modifier
+    //  [x] create an internal constructor that sets the _paused variable to false
+    //  [x] create 'whenNotPaused' & 'paused' modifier that throws in the appropriate situation
+    //  [x] create a Paused & Unpaused event that emits the address that triggered the event
+
+    bool private _paused;
+
+    event Paused(address pauser);
+    event Unpaused(address pauser);
+
+    modifier whenNotPaused
+    {
+        require(!_paused, "Contract is currently paused");
+        _;
+    }
+
+    modifier paused
+    {
+        require(paused, "Contract is not paused");
+        _;
+    }
+
+    constructor()
+    public
+    {
+        _paused = false;
+    }
+
+    function setPaused(bool state)
+    onlyOwner
+    {
+        _paused = state;
+
+        if (state) {
+            emit Paused(msg.sender);
+        } else {
+            emit Unpaused(msg.sender);
+        }
+    }
+
+}
+
 
 contract ERC165 {
     bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
@@ -455,14 +524,20 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
 }
 
-//  TODO's: Create CustomERC721Token contract that inherits from the ERC721Metadata contract. You can name this contract as you please
-//  1) Pass in appropriate values for the inherited ERC721Metadata contract
-//      - make the base token uri: https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/
-//  2) create a public mint() that does the following:
-//      -can only be executed by the contract owner
-//      -takes in a 'to' address, tokenId, and tokenURI as parameters
-//      -returns a true boolean upon completion of the function
-//      -calls the superclass mint and setTokenURI functions
+
+
+contract ERC721MintableComplete is ERC721Metadata {
+
+    //  TODO's: Create CustomERC721Token contract that inherits from the ERC721Metadata contract. You can name this contract as you please
+    //  1) Pass in appropriate values for the inherited ERC721Metadata contract
+    //      - make the base token uri: https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/
+    //  2) create a public mint() that does the following:
+    //      -can only be executed by the contract owner
+    //      -takes in a 'to' address, tokenId, and tokenURI as parameters
+    //      -returns a true boolean upon completion of the function
+    //      -calls the superclass mint and setTokenURI functions
+
+}
 
 
 
