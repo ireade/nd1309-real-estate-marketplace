@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "lite-server",
+    "start": "cd eth-contracts && truffle develop",
+    "compile": "cd eth-contracts && truffle compile",
+    "test": "cd eth-contracts && truffle test"
   },
   "keywords": [],
   "author": "pk <pkrasam@gmail.com> (https://ipfs.infura.io/ipfs/QmSXiR9Khm3yo1J67nUopvVBxFJ8YGN2fUGZ34Etr3m92x/)",
   "license": "MIT",
-  "devDependencies": {
-    "lite-server": "2.4.0"
-  },
   "dependencies": {
     "openzeppelin-solidity": "^2.2.0",
     "solc": "^0.5.2",
-    "solc-js": "^0.5.2"
+    "solc-js": "^0.5.2",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }

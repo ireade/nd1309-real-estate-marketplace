@@ -27,17 +27,21 @@ before(async function () {
 
 it('should pass verification with correct proof', async function () {
 
-    const tx = await instance.verifyTx(
-        proof.proof.a,
-        proof.proof.b,
-        proof.proof.c,
-        proof.inputs
-    );
+    let success = false;
 
-    const VerifiedEvent = tx.logs.find((log) => log.event === 'Verified');
-    const verifiedEventEmitted = !!(VerifiedEvent);
+    try {
+        await instance.verifyTx(
+            proof.proof.a,
+            proof.proof.b,
+            proof.proof.c,
+            proof.inputs
+        );
+        success = true;
+    } catch (err) {
+        success = false;
+    }
 
-    assert.equal(verifiedEventEmitted, true, "New verification event not emitted");
+    assert.equal(success, true, "New verification successful");
 });
 
 
@@ -49,9 +53,9 @@ it('should fail verification with incorrect proof', async function () {
 
         const tx = await instance.verifyTx(
             proof.proof.a,
-            proof.proof.a,
-            proof.proof.a,
-            proof.inputs
+            proof.proof.b,
+            proof.proof.b,
+            ["abc", "def"]
         );
 
         const VerifiedEvent = tx.logs.find((log) => log.event === 'Verified');
