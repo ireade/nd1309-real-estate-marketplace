@@ -9,10 +9,10 @@ Token Address: [0x4d1282a6b4B88ea1f74B783cF87e64557E4e62fa](https://rinkeby.ethe
 
 ## OpenSea
 
-Original Owner - [0xb43eadc52571fd08291fa783aea561187d2c544d](https://rinkeby.opensea.io/accounts/0xb43eadc52571fd08291fa783aea561187d2c544d)<br>
-Buyer of 5 Listings - [0x61c49cce1ac913552a67da45f61a4a8249d34a0a](https://rinkeby.opensea.io/accounts/0x61c49cce1ac913552a67da45f61a4a8249d34a0a)<br>
+Original Owner: [0xb43eadc52571fd08291fa783aea561187d2c544d](https://rinkeby.opensea.io/accounts/0xb43eadc52571fd08291fa783aea561187d2c544d)<br>
+Buyer of 5 Listings: [0x61c49cce1ac913552a67da45f61a4a8249d34a0a](https://rinkeby.opensea.io/accounts/0x61c49cce1ac913552a67da45f61a4a8249d34a0a)<br>
 
-[Buy Transaction](https://rinkeby.etherscan.io/tx/0x0add1e2510300b2332cbd820181f18110c5092b73ee80cf104e3d63def82c0f1)
+Buy Transaction: [0x0add1e2510300b2332cbd820181f18110c5092b73ee80cf104e3d63def82c0f1](https://rinkeby.etherscan.io/tx/0x0add1e2510300b2332cbd820181f18110c5092b73ee80cf104e3d63def82c0f1)
 
 
 ## Contracts
