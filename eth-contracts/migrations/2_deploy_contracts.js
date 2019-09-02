@@ -6,5 +6,7 @@ module.exports = function (deployer) {
 
     deployer.deploy(IRealEstateToken)
         .then(() => deployer.deploy(Verifier))
-        .then(() => deployer.deploy(SolnSquareVerifier, Verifier.address));
+        .then(() => {
+            deployer.deploy(SolnSquareVerifier, Verifier.address)
+        });
 };

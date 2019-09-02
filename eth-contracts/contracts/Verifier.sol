@@ -563,6 +563,7 @@ contract Verifier {
         vk.gamma_abc[1] = Pairing.G1Point(uint256(0x17ea0daedcc2bdb6efd2436cb4df6f52f10536a3e978bbfbb30d3470c1cc5ac8), uint256(0x1a41b69d39cadad451a055ba2a5556ddc6e14732c70d4fcf6fd4dc4959f73f65));
         vk.gamma_abc[2] = Pairing.G1Point(uint256(0x0852bb862fae3293966702a3ceda855f5815ca18d2935f12434de937a2de2360), uint256(0x19a9aa1f0cbe3c50df70659c95de19e793df4e597004c6050d2715bff24713c2));
     }
+
     function verify(uint[] memory input, Proof memory proof) internal returns (uint) {
         uint256 snark_scalar_field = 21888242871839275222246405745257275088548364400416034343698204186575808495617;
         VerifyingKey memory vk = verifyingKey();
@@ -581,7 +582,9 @@ contract Verifier {
              Pairing.negate(vk.a), vk.b)) return 1;
         return 0;
     }
+
     event Verified(string s);
+
     function verifyTx(
             uint[2] memory a,
             uint[2][2] memory b,
