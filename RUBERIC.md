@@ -9,8 +9,8 @@ https://review.udacity.com/#!/rubrics/1712/view
 
 ## ERC721
 
-- [ ] Student completes the boilerplate ERC721 Mintable Contract in ERC721Mintable.sol
-- [ ] Student writes and passes the test cases in TestERC721Mintable.js
+- [x] Student completes the boilerplate ERC721 Mintable Contract in ERC721Mintable.sol
+- [x] Student writes and passes the test cases in TestERC721Mintable.js
 - [ ] Student writes and passes the test cases in 'TestSquareVerifier.js'
 - [ ] Student writes and passes the test cases in TestSolnSquareVerifier.js
 
