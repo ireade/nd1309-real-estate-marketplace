@@ -47,12 +47,16 @@ describe('have pausable functionality', function () {
     });
 
     it('should return paused state', async function () {
-        const result = await instance.
+        const result = await instance.getPaused();
 
+        assert.equal(result, false, "Initial paused state is not false");
     });
 
-    it('owner should be able to change paused state', async function () {
+    it('should be able to change paused state', async function () {
+        const newState = true;
+        await instance.setPaused(newState, {from: owner});
 
+        assert.equal(await instance.getPaused(), newState, "Paused state was not changed");
     });
 
 });
