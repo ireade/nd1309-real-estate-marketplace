@@ -73,6 +73,13 @@ contract Pausable is Ownable {
         _paused = false;
     }
 
+    function getPaused()
+    public view
+    returns (bool)
+    {
+        return _paused;
+    }
+
     function setPaused(bool state)
     public
     onlyOwner

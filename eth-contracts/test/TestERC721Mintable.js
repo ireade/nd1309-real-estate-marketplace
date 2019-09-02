@@ -47,6 +47,7 @@ describe('have pausable functionality', function () {
     });
 
     it('should return paused state', async function () {
+        const result = await instance.
 
     });
 
