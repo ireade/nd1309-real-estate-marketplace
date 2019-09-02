@@ -2,14 +2,25 @@
 
 ## Token
 
-[Token](https://rinkeby.etherscan.io/token/0x4d1282a6b4B88ea1f74B783cF87e64557E4e62fa)
+Name: IRealEstateToken<br>
+Symbol: IRET<br>
+Token Address: [0x4d1282a6b4B88ea1f74B783cF87e64557E4e62fa](https://rinkeby.etherscan.io/token/0x4d1282a6b4B88ea1f74B783cF87e64557E4e62fa)
+
+
+## OpenSea
+
+Original Owner - https://rinkeby.opensea.io/accounts/0xb43eadc52571fd08291fa783aea561187d2c544d
+Buyer of 5 Listings - https://rinkeby.opensea.io/accounts/0x61c49cce1ac913552a67da45f61a4a8249d34a0a
+
+[Buy Transaction](https://rinkeby.etherscan.io/tx/0x0add1e2510300b2332cbd820181f18110c5092b73ee80cf104e3d63def82c0f1)
+
+
+## Contracts
 
 [SolnSquareVerifier Contract](https://rinkeby.etherscan.io/address/0x4d1282a6b4B88ea1f74B783cF87e64557E4e62fa)
 [Verifier Contract](https://rinkeby.etherscan.io/address/0xd3A913F4C6dF9f7c466C7871601A81799b0afcF5)
 [IRealEstateToken Contract](https://rinkeby.etherscan.io/address/0x04CAeA9B8c6c3403bF0fAB713977e397f7736e5E)
 
-
-## Contracts
 
 ```bash
 
@@ -72,20 +83,14 @@ Summary
 
 ```
 
-
-
 ## Testing
 
 1. `cd eth-contracts` directory
-1. Run `truffle compile && truffle migrate`
+1. Run `truffle compile && truffle migrate --reset`
 1. run `truffle test`
 
 
-
-
-
 ## Versions
-
 
 ### Truffle
 
@@ -127,4 +132,4 @@ Server: Docker Engine - Community
   Version:          0.18.0
   GitCommit:        fec3683
   ```
-
+  
