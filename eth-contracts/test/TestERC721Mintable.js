@@ -1,36 +1,49 @@
 const IRealEstateToken = artifacts.require('IRealEstateToken');
 
-let account_one;
-let account_two;
+let accounts;
+let owner;
 
-
-contract('TestERC721Mintable', accounts => {
-    account_one = accounts[0];
-    account_two = accounts[1];
+contract('TestERC721Mintable', acc => {
+    accounts = acc;
+    owner = accounts[0];
 });
 
 describe('have ownership properties', function () {
+
+    let instance;
+
     beforeEach(async function () {
-        this.contract = await IRealEstateToken.new({from: account_one});
+        instance = await IRealEstateToken.new({from: owner});
     });
 
     it('should return contract owner', async function () {
+        const returnedOwner = await instance.getOwner();
 
+        assert.equal(returnedOwner, owner, "Contract owner is incorrect");
     });
 
     it('should be able to transfer ownership to new owner', async function () {
+        const newOwner = accounts[1];
+        await instance.transferOwnership(newOwner, {from: owner});
 
+        assert.equal(await instance.getOwner(), newOwner, "Ownership was not transferred to new owner");
     });
 
+
     it('should fail when minting when address is not contract owner', async function () {
+
+        // @todo
 
     });
 
 });
 
 describe('have pausable functionality', function () {
+
+    let instance;
+
     beforeEach(async function () {
-        this.contract = await IRealEstateToken.new({from: account_one});
+        instance = await IRealEstateToken.new({from: owner});
     });
 
     it('should return paused state', async function () {
@@ -45,10 +58,13 @@ describe('have pausable functionality', function () {
 
 
 describe('match erc721 spec', function () {
-    beforeEach(async function () {
-        this.contract = await IRealEstateToken.new({from: account_one});
 
-        // TODO: mint multiple tokens
+    let instance;
+
+    beforeEach(async function () {
+        instance = await IRealEstateToken.new({from: owner});
+
+        // @todo: mint tokens
     });
 
     it('should get name, symbol, and baseTokenURI of token', async function () {
