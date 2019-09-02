@@ -4,7 +4,7 @@ https://review.udacity.com/#!/rubrics/1712/view
 
 ## Project Deliverables
 
-- [ ] Student includes a README to explain how to test thier code.
+- [ ] Student includes a README to explain how to test their code.
 - [ ] Student provides Contract Addresses, Contract Abi's, OpenSea MarketPlace Storefront link's.
 
 ## ERC721
