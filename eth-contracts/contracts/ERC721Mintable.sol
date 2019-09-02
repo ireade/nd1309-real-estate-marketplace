@@ -568,8 +568,12 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
 contract IRealEstateToken is ERC721Metadata {
 
+    string private _name = "IRealEstateToken";
+    string private _symbol = "IRET";
+    string private _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
+
     constructor()
-    ERC721Metadata("IRealEstateToken", "IRET", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/")
+    ERC721Metadata(_name, _symbol, _baseTokenURI)
     public
     {
     }
