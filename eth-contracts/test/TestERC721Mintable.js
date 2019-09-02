@@ -3,7 +3,7 @@ const IRealEstateToken = artifacts.require('IRealEstateToken');
 let accounts;
 let owner;
 
-contract('TestERC721Mintable', acc => {
+contract('IRealEstateToken', acc => {
     accounts = acc;
     owner = accounts[0];
 });

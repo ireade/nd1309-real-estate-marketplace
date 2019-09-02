@@ -1,9 +1,10 @@
 const IRealEstateToken = artifacts.require('IRealEstateToken');
-// const SquareVerifier = artifacts.require("./SquareVerifier.sol");
-// const SolnSquareVerifier = artifacts.require("./SolnSquareVerifier.sol");
+const Verifier = artifacts.require("./Verifier.sol");
+const SolnSquareVerifier = artifacts.require("./SolnSquareVerifier.sol");
 
 module.exports = function (deployer) {
-    deployer.deploy(IRealEstateToken);
-    // deployer.deploy(SquareVerifier);
-    // deployer.deploy(SolnSquareVerifier);
+
+    deployer.deploy(IRealEstateToken)
+        .then(() => deployer.deploy(Verifier))
+        .then(() => deployer.deploy(SolnSquareVerifier, Verifier.address));
 };

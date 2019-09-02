@@ -16,7 +16,7 @@ https://review.udacity.com/#!/rubrics/1712/view
 
 ## Zokrates
 
-- [ ] Student completes the Zokrates proof in square.code by adding the variable names in square.code
+- [x] Student completes the Zokrates proof in square.code by adding the variable names in square.code
 - [ ] Student completes test contract in SolnSquareVerifier.sol
 - [ ] Student writes and passes the test cases in 'TestSolnSquareVerifier.js'
 
