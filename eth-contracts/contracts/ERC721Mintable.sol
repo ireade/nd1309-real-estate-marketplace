@@ -38,7 +38,7 @@ contract Ownable {
     public
     onlyOwner
     {
-        require(!newOwner.isContract, "Cannot transfer ownership to a contract account");
+        require(!Address.isContract(newOwner), "Cannot transfer ownership to a contract account");
         require(newOwner != address(0), "Address is invalid");
 
         _owner = newOwner;
@@ -62,7 +62,7 @@ contract Pausable is Ownable {
 
     modifier paused
     {
-        require(paused, "Contract should be paused");
+        require(_paused, "Contract should be paused");
         _;
     }
 
@@ -73,6 +73,7 @@ contract Pausable is Ownable {
     }
 
     function setPaused(bool state)
+    public
     onlyOwner
     {
         _paused = state;
@@ -259,7 +260,6 @@ contract ERC721 is Pausable, ERC165 {
     // @dev Internal function to mint a new token
     // TIP: remember the functions to use for Counters. you can refresh yourself with the link above
     function _mint(address to, uint256 tokenId) internal {
-        require(!to.isContract, "No contract addresses allowed");
         require(to != address(0), "Address is invalid");
         require(!_exists(tokenId), "Token already exists");
 
@@ -275,7 +275,6 @@ contract ERC721 is Pausable, ERC165 {
 
         require(ownerOf(tokenId) == from, "From address is not the owner of the token");
 
-        require(!to.isContract, "No contract addresses allowed");
         require(to != address(0), "Address is invalid");
 
         _clearApproval(tokenId);
@@ -521,21 +520,21 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
     function getName()
     external view
-    returns (string)
+    returns (string memory)
     {
         return _name;
     }
 
     function getSymbol()
     external view
-    returns (string)
+    returns (string memory)
     {
         return _symbol;
     }
 
     function getBaseTokenURI()
     external view
-    returns (string)
+    returns (string memory)
     {
         return _baseTokenURI;
     }
@@ -549,6 +548,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     }
 
     function setTokenURI(uint256 tokenId)
+    public
     {
         require(_exists(tokenId), "Token does not exist");
 

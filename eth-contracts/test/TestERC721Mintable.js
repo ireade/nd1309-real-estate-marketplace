@@ -1,4 +1,4 @@
-var ERC721MintableComplete = artifacts.require('ERC721MintableComplete');
+const IRealEstateToken = artifacts.require('IRealEstateToken');
 
 let account_one;
 let account_two;
@@ -11,7 +11,7 @@ contract('TestERC721Mintable', accounts => {
 
 describe('have ownership properties', function () {
     beforeEach(async function () {
-        this.contract = await ERC721MintableComplete.new({from: account_one});
+        this.contract = await IRealEstateToken.new({from: account_one});
     });
 
     it('should return contract owner', async function () {
@@ -30,7 +30,7 @@ describe('have ownership properties', function () {
 
 describe('have pausable functionality', function () {
     beforeEach(async function () {
-        this.contract = await ERC721MintableComplete.new({from: account_one});
+        this.contract = await IRealEstateToken.new({from: account_one});
     });
 
     it('should return paused state', async function () {
@@ -46,7 +46,7 @@ describe('have pausable functionality', function () {
 
 describe('match erc721 spec', function () {
     beforeEach(async function () {
-        this.contract = await ERC721MintableComplete.new({from: account_one});
+        this.contract = await IRealEstateToken.new({from: account_one});
 
         // TODO: mint multiple tokens
     });
