@@ -526,6 +526,9 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
         _registerInterface(_INTERFACE_ID_ERC721_METADATA);
     }
 
+    // @reviewer note
+    // This is non-critical but otherwise important. I highly advise that you rename your getter functions to name() and symbol(). These are the conventional function names to get those parameters and block explorers such as Etherscan use it. For example, the Token Tracker field will not be activated if you use getName() and getSymbol(). This it how it looks like now:
+
     function getName()
     external view
     returns (string memory)
